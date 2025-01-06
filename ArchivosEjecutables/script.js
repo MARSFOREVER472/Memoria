@@ -1,10 +1,12 @@
 // DECLARACIÓN DE VARIABLES...
 
 const cartasTotal = 12; // 12 CARTAS EN TOTAL.
+const cartasDisponibles = ['A', 'J', 'Q', 'K']; // LETRAS DE LA BARAJA INGLESA.
 let cartas = []; // TODAS LAS CARTAS.
 let cartasSeleccionadas = []; // SI SE SELECCIONARON LAS CARTAS DENTRO DE LA INTERFAZ.
 let valoresUtilizados = []; // SE UTILIZARON VALORES AL MOMENTO DE DESTAPAR CARTAS.
 let movimientoActual = 0; // MOVIMIENTO ACTUAL AL DESTAPAR CARTAS.
+let intentosActuales = 0; // CANTIDAD DE INTENTOS.
 
 let plantillaCarta = '<div class="card"><div class="back"></div><div class="face"></div></div>';
 
@@ -14,14 +16,16 @@ function activate(e)
 {
     if (movimientoActual < 2) // SI LA CANTIDAD DE MOVIMIENTOS SON MENORES QUE 2...
     {
-        e.target.classList.add('active');
 
-        if (!cartasSeleccionadas[0] || cartasSeleccionadas[0] !== e.target)
+        if ((!cartasSeleccionadas[0] || cartasSeleccionadas[0] !== e.target) && !e.target.classList.contains('active'))
         {
+            e.target.classList.add('active');
             cartasSeleccionadas.push(e.target);
 
             if(++movimientoActual == 2) // SI LA CANTIDAD DE MOVIMIENTOS FUESE 2 O MÁS...
             {
+                intentosActuales++;
+                document.querySelector('#stats').innerHTML = intentosActuales + ' intentos';
                 if(cartasSeleccionadas[0].querySelectorAll('.face')[0].innerHTML == cartasSeleccionadas[1].querySelectorAll('.face')[0].innerHTML)
                 {
                     cartasSeleccionadas = [];
@@ -60,6 +64,20 @@ function valorAleatorio()
     }
 }
 
+// CREAREMOS OTRA FUNCIÓN PARA QUE CARTAS TAMBIÉN DISPONGAN DE CARACTERES TÍPICOS DE UNA BARAJA INGLESA...
+
+function getFaceValue(valor)
+{
+    let rtn = valor;
+    
+    if (valor < cartasDisponibles.length)
+    {
+        rtn = cartasDisponibles[valor];
+    }
+
+    return rtn;
+}
+
 // CICLO "for" PARA CADA CARTA SE GENERAN FIGURAS...
 
 for (let i = 0; i < cartasTotal; i++)
@@ -69,6 +87,6 @@ for (let i = 0; i < cartasTotal; i++)
     cartas.push(div);
     document.querySelector('#game').append(cartas[i]);
     valorAleatorio();
-    cartas[i].querySelectorAll('.face')[0].innerHTML = valoresUtilizados[i];
+    cartas[i].querySelectorAll('.face')[0].innerHTML = getFaceValue(valoresUtilizados[i]);
     cartas[i].querySelectorAll('.card')[0].addEventListener('click', activate);
 }

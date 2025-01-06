@@ -31,6 +31,16 @@ body
     justify-content: center;
 }
 
+#stats
+{
+    color: orange;
+    position: absolute;
+    padding: 1rem;
+    text-align: center;
+    width: calc(100% - 2rem);
+    font-size: 2rem;
+}
+
 /* PARA LA CARTA... */
 
 .card
@@ -80,4 +90,5 @@ body
 .card .back
 {
     border: 2px solid red;
+    background: url(https://png.pngtree.com/png-vector/20231016/ourmid/pngtree-om-mantra-aum-png-image_10264627.png) center / contain no-repeat;
 }
