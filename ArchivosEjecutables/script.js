@@ -8,6 +8,58 @@ let movimientoActual = 0; // MOVIMIENTO ACTUAL AL DESTAPAR CARTAS.
 
 let plantillaCarta = '<div class="card"><div class="back"></div><div class="face"></div></div>';
 
+// CREAREMOS UNA FUNCIÓN MEDIANTE UN ALGORITMO SENCILLO PARA EFECTUAR ACCIONES CON LAS CARTAS...
+
+function activate(e)
+{
+    if (movimientoActual < 2) // SI LA CANTIDAD DE MOVIMIENTOS SON MENORES QUE 2...
+    {
+        e.target.classList.add('active');
+
+        if (!cartasSeleccionadas[0] || cartasSeleccionadas[0] !== e.target)
+        {
+            cartasSeleccionadas.push(e.target);
+
+            if(++movimientoActual == 2) // SI LA CANTIDAD DE MOVIMIENTOS FUESE 2 O MÁS...
+            {
+                if(cartasSeleccionadas[0].querySelectorAll('.face')[0].innerHTML == cartasSeleccionadas[1].querySelectorAll('.face')[0].innerHTML)
+                {
+                    cartasSeleccionadas = [];
+                    movimientoActual = 0;
+                }
+
+                else // EN CASO CONTRARIO...
+                {
+                    setTimeout(() => {
+                        cartasSeleccionadas[0].classList.remove('active');
+                        cartasSeleccionadas[1].classList.remove('active');
+                        cartasSeleccionadas = [];
+                        movimientoActual = 0;
+                    }, 600);
+                }
+            }
+        }
+    }
+}
+
+// CREAREMOS UNA FUNCIÓN PARA MOSTRAR VALORES ALEATORIOS...
+
+function valorAleatorio()
+{
+    let rnd = Math.floor(Math.random() * cartasTotal * 0.5);
+    let valores = valoresUtilizados.filter(valor => valor === rnd);
+
+    if (valores.length < 2)
+    {
+        valoresUtilizados.push(rnd);
+    }
+
+    else
+    {
+        valorAleatorio();
+    }
+}
+
 // CICLO "for" PARA CADA CARTA SE GENERAN FIGURAS...
 
 for (let i = 0; i < cartasTotal; i++)
@@ -16,4 +68,7 @@ for (let i = 0; i < cartasTotal; i++)
     div.innerHTML = plantillaCarta;
     cartas.push(div);
     document.querySelector('#game').append(cartas[i]);
+    valorAleatorio();
+    cartas[i].querySelectorAll('.face')[0].innerHTML = valoresUtilizados[i];
+    cartas[i].querySelectorAll('.card')[0].addEventListener('click', activate);
 }
