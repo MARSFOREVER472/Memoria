@@ -1,3 +1,3 @@
 # **_Memoria_**
 
-## **_Crea un juego web donde el jugador debe ir destapando cartas hasta encontrar todos los pares._**
+## **_Crea un juego web en donde el jugador debe ir destapando cartas hasta encontrar todos los pares._**
