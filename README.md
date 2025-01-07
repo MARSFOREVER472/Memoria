@@ -4,4 +4,4 @@
 
 ### **_Tutorial paso a paso (HTML, CSS y JS):_**
 
-_Te guiaré paso a paso a través del proceso de desarrollo para que puedas crear tu propio juego desde cero._
+**_Te guiaré paso a paso a través del proceso de desarrollo para que puedas crear tu propio juego desde cero._**
