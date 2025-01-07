@@ -4,4 +4,4 @@
 
 ### **_Tutorial paso a paso (HTML, CSS y JS)_**
 
-Crea un juego web donde el jugador debe ir destapando cartas hasta encontrar todos los pares.
+Te guiaré paso a paso a través del proceso de desarrollo para que puedas crear tu propio juego desde cero.
