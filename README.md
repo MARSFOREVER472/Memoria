@@ -6,4 +6,4 @@
 
 - **_Te guiaré paso a paso a través del proceso de desarrollo para que puedas crear tu propio juego desde 0 utilizando únicamente herramientas de JavaScript._**
   
-- **_Una vez que lo termines, ¿En cuántos intentos lograrás destapar todas las cartas en un sólo click?_**
+- **_Una vez en que lo termines, ¿En cuántos intentos lograrás destapar todas las cartas en un sólo click?_**
