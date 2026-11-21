@@ -1,6 +1,6 @@
 # **_Memoria_**
 
-## **_Crea un sitio web en donde el jugador debe ir destapando todas las cartas hasta encontrar todas las parejas..._**
+## **_Crea un sitio web en donde el jugador debe ir destapando todas las cartas hasta encontrar todas las parejas de fichas..._**
 
 ### **_Tutorial paso a paso en Modo Front-End (Con archivos en formatos HTML, CSS y JS):_**
 
